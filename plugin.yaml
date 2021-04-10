@@ -1,0 +1,5 @@
+plugin:
+    name: 'Shopaholic Fakturoid'
+    description: 'Shopaholic Fakturoid connector'
+    author: 'Vojta Svoboda'
+    icon: icon-cloud-upload

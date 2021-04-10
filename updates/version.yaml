@@ -1,0 +1,4 @@
+1.0.0:
+    - First version of ShopaholicFakturoid
+    - create_invoices_table.php
+    - add_user_fakturoid_id.php

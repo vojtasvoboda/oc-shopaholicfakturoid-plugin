@@ -1,0 +1,19 @@
+{
+    "name": "vojtasvoboda/oc-shopaholicfakturoid-plugin",
+    "description": "Shopaholic Fakturoid connector plugin for OctoberCMS",
+    "type": "october-plugin",
+    "keywords": ["shopaholic", "fakturoid"],
+    "require": {
+        "php": ">=7.0.8",
+        "ext-json": "*",
+        "composer/installers": "^1.10"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vojta Svoboda",
+            "email": "vojtasvoboda.cz@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}

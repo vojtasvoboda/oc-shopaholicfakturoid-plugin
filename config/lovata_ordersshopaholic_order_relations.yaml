@@ -1,0 +1,9 @@
+fakturoid_invoices:
+    label: invoices
+    view:
+        list: $/vojtasvoboda/shopaholicfakturoid/models/invoice/columns.yaml
+        toolbarButtons: false
+        showCheckboxes: false
+        defaultSort:
+            column: created_at
+            direction: desc

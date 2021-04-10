@@ -1,0 +1,10 @@
+fakturoid_button@update:
+    tab: Fakturoid
+    type: partial
+    path: $/vojtasvoboda/shopaholicfakturoid/controllers/invoices/_order_invoices_button.htm
+
+fakturoid_invoices@update:
+    tab: Fakturoid
+    label: Invoices
+    type: partial
+    path: $/vojtasvoboda/shopaholicfakturoid/controllers/invoices/_order_invoices.htm
