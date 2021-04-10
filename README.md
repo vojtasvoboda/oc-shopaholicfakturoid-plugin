@@ -10,8 +10,8 @@ Require VojtaSvoboda.Fakturoid plugin and Lovata.OrdersShopaholic plugins.
 
 ## Using
 
-After installing, you will see new tab Fakturoid in Shopaholic order detail with list of all attached Fakturoid invoices
-and button which allows you to send order to the Fakturoid and create new Fakturoid invoice.
+After installing, you will see a new tab Fakturoid in Shopaholic order detail with a list of all attached Fakturoid
+invoices and button which allows you to send an order to the Fakturoid and create a new Fakturoid invoice.
 
 ## Contributing
 
