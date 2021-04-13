@@ -2,3 +2,4 @@
     - First version of ShopaholicFakturoid
     - create_invoices_table.php
     - add_user_fakturoid_id.php
+1.0.1: Add support for RainLab.Translation
