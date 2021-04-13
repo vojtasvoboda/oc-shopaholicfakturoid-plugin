@@ -6,13 +6,6 @@ use Lovata\OrdersShopaholic\Models\Order;
 
 class FakturoidUserFactory
 {
-    /** @var string[] $countryCodes */
-    private $countryCodes = [
-        'česká republika' => 'CZ',
-        'slovensko' => 'SK',
-        'francie' => 'FR',
-    ];
-
     /**
      * Prepare Fakturoid user (subject) data from existing Order and User.
      *
@@ -33,7 +26,7 @@ class FakturoidUserFactory
             $data['email'] = trim($user->email);
         }
         if (empty($data['phone'])) {
-            $date['phone'] = trim($user->phone);
+            $data['phone'] = trim($user->phone);
         }
 
         // we can use user's name, if missing in order
@@ -132,7 +125,8 @@ class FakturoidUserFactory
         }
 
         $country = mb_strtolower($order->property['billing_country']);
+        $countryCodes = Config::get('vojtasvoboda.shopaholicfakturoid::country_codes', []);
 
-        return isset($this->countryCodes[$country]) ? $this->countryCodes[$country] : null;
+        return isset($countryCodes[$country]) ? $countryCodes[$country] : null;
     }
 }
