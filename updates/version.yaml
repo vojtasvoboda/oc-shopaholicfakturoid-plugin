@@ -3,3 +3,4 @@
     - create_invoices_table.php
     - add_user_fakturoid_id.php
 1.0.1: Add support for RainLab.Translation
+1.0.2: Fix handling exceptions without error messages

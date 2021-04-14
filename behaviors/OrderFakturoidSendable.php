@@ -20,7 +20,11 @@ class OrderFakturoidSendable extends ExtensionBase
             $service->createInvoiceForOrder($order_id);
 
         } catch (Exception $e) {
-            Flash::error($e->getMessage());
+            $error = $e->getMessage();
+            if (empty($error)) {
+                $error = 'Neznámá chyba. Více info viz. Fakturoid > Log';
+            }
+            Flash::error($error);
         }
     }
 }
