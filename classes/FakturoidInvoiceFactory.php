@@ -3,6 +3,7 @@
 use Config;
 use Lovata\OrdersShopaholic\Models\Order;
 use System\Classes\PluginManager;
+use VojtaSvoboda\Fakturoid\Models\Settings;
 
 class FakturoidInvoiceFactory
 {
@@ -13,11 +14,46 @@ class FakturoidInvoiceFactory
      */
     public function prepareInvoiceDataFromOrder(Order $order, $fakturoid_user_id)
     {
-        // init
-        $lines = [];
-
-        // order lines locale
+        // order locale
         $locale = $this->getTranslationLocale($order);
+
+        // order lines
+        $lines = $this->getOrderLines($order, $locale);
+
+        // prepare invoice data
+        $invoice = [
+            'custom_id' => $order->id,
+            'subject_id' => $fakturoid_user_id,
+            'currency' => !empty($order->currency) ? $order->currency->code : null,
+            'payment_method' => !empty($order->payment_method) ? $order->payment_method->code : null,
+            'lines' => $lines,
+        ];
+
+        // if order has user
+        if ($order->user !== null) {
+            $user = $order->user;
+
+            // add user due date days if additional property code set
+            $field = Settings::get('additional_properties_user_due_date_days');
+            if ($field !== null && isset($user->property[$field])) {
+                $due_date_days = $user->property[$field];
+                if (is_numeric($due_date_days) && $due_date_days > 0) {
+                    $invoice['due'] = (int) $due_date_days;
+                }
+            }
+        }
+
+        return $invoice;
+    }
+
+    /**
+     * @param Order $order
+     * @param string $locale
+     * @return array
+     */
+    private function getOrderLines(Order $order, $locale)
+    {
+        $lines = [];
 
         // prepare order lines
         foreach ($order->order_position as $position) {
@@ -45,13 +81,7 @@ class FakturoidInvoiceFactory
             ];
         }
 
-        return [
-            'custom_id' => $order->id,
-            'subject_id' => $fakturoid_user_id,
-            'currency' => !empty($order->currency) ? $order->currency->code : null,
-            'payment_method' => !empty($order->payment_method) ? $order->payment_method->code : null,
-            'lines' => $lines,
-        ];
+        return $lines;
     }
 
     /**
