@@ -3,6 +3,7 @@
 use Config;
 use Lovata\Buddies\Models\User;
 use Lovata\OrdersShopaholic\Models\Order;
+use VojtaSvoboda\Fakturoid\Models\Settings;
 
 class FakturoidUserFactory
 {
@@ -62,9 +63,9 @@ class FakturoidUserFactory
         $country = $this->getCountryFromOrder($order);
 
         // invoicing details
-        $reg_no_key = Config::get('vojtasvoboda.shopaholicfakturoid::config.additional_properties.reg_no');
+        $reg_no_key = Settings::get('additional_properties_company_reg_no');
         $registration_no = !empty($order->property[$reg_no_key]) ? $order->property[$reg_no_key] : null;
-        $vat_no_key = Config::get('vojtasvoboda.shopaholicfakturoid::config.additional_properties.vat_no');
+        $vat_no_key = Settings::get('additional_properties_company_vat_no');
         $vat_no = !empty($order->property[$vat_no_key]) ? $order->property[$vat_no_key] : null;
 
         // return user data

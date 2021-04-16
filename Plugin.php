@@ -7,6 +7,7 @@ use File;
 use Lovata\OrdersShopaholic\Controllers\Orders;
 use Lovata\OrdersShopaholic\Models\Order;
 use System\Classes\PluginBase;
+use VojtaSvoboda\Fakturoid\Models\Settings;
 use VojtaSvoboda\ShopaholicFakturoid\Models\Invoice;
 use Yaml;
 
@@ -66,6 +67,17 @@ class Plugin extends PluginBase
                 'permissions' => ['vojtasvoboda.shopaholic_fakturoid.invoices'],
                 'order' => 500,
             ]);
+        });
+
+        // extend VojtaSvoboda.Fakturoid settings
+        Event::listen('backend.form.extendFields', function ($widget) {
+            if (!$widget->model instanceof Settings) {
+                return;
+            }
+
+            $configFile = __DIR__ . '/config/settings_fields.yaml';
+            $config = Yaml::parse(File::get($configFile));
+            $widget->addTabFields($config);
         });
     }
 

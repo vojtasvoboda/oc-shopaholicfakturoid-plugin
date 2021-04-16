@@ -1,0 +1,14 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+additional_properties_company_reg_no:
+    tab: Dodatečná pole
+    label: Registration No. Code
+    comment: 'Shopaholic Order additional property Code for company registration number'
+    default: 'ico'
+additional_properties_company_vat_no:
+    tab: Dodatečná pole
+    label: Registration No. Code
+    comment: 'Shopaholic Order additional property Code for company VAT number'
+    default: 'dic'

@@ -47,7 +47,8 @@ class OrderService
         } catch (Exception $e) {
             $response = json_decode($e->getMessage());
             if (isset($response->errors)) {
-                $refreshContact = isset($response->subject_id) && $response->subject_id[0] === 'Kontakt neexistuje.';
+                $errors = $response->errors;
+                $refreshContact = isset($errors->subject_id) && $errors->subject_id[0] === 'Kontakt neexistuje.';
             }
             if ($refreshContact === false) {
                 throw $e;
