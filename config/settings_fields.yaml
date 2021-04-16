@@ -4,11 +4,17 @@
 
 additional_properties_company_reg_no:
     tab: Dodatečná pole
-    label: Registration No. Code
-    comment: 'Shopaholic Order additional property Code for company registration number'
+    label: IČO
+    comment: 'Shopaholic Order additional property kód (code) pro IČO'
     default: 'ico'
 additional_properties_company_vat_no:
     tab: Dodatečná pole
-    label: Registration No. Code
-    comment: 'Shopaholic Order additional property Code for company VAT number'
+    label: DIČ
+    comment: 'Shopaholic Order additional property kód (code) pro DIČ'
     default: 'dic'
+
+settings_redirect_to_list:
+    tab: Nastavení
+    label: Přesměrovat na výpis objednávek
+    comment: 'Po odeslání do Fakturoidu přesměrovat na výpis všech objednávek'
+    type: checkbox
