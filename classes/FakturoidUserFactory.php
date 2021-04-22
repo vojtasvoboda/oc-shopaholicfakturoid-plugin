@@ -51,8 +51,11 @@ class FakturoidUserFactory
         $email = !empty(trim($order->property['email'])) ? trim($order->property['email']) : null;
         $phone = !empty(trim($order->property['phone'])) ? trim($order->property['phone']) : null;
 
-        // user name
-        $name = $this->getOrderFullName($order);
+        // try to use company name, otherwise use user name
+        $name = $this->getOrderCompanyName($order);
+        if (empty($name)) {
+            $name = $this->getOrderFullName($order);
+        }
 
         // user address
         $order_street = !empty($order->property['billing_street']) ? trim($order->property['billing_street']) : null;
@@ -113,6 +116,21 @@ class FakturoidUserFactory
         }
 
         return implode(' ', $parts);
+    }
+
+    /**
+     * @param Order $order
+     * @return string|null
+     */
+    private function getOrderCompanyName(Order $order)
+    {
+        // if having company name property set, return company name
+        $company_name_key = Settings::get('additional_properties_company_name');
+        if (empty($company_name_key) || empty($order->property[$company_name_key])) {
+            return null;
+        }
+
+        return $order->property[$company_name_key];
     }
 
     /**

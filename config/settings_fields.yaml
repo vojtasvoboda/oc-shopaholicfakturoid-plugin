@@ -5,15 +5,23 @@
 additional_properties_company_reg_no:
     tab: Dodatečná pole
     label: IČO
-    comment: 'Lovata.OrdersShopaholic additional property kód (code) pro IČO'
+    comment: 'Lovata.OrdersShopaholic additional property kód pro IČO, které se propíše na faktury'
+    span: left
 additional_properties_company_vat_no:
     tab: Dodatečná pole
     label: DIČ
-    comment: 'Lovata.OrdersShopaholic additional property kód (code) pro DIČ'
+    comment: 'Lovata.OrdersShopaholic additional property kód pro DIČ, které se propíše na faktury'
+    span: right
+additional_properties_company_name:
+    tab: Dodatečná pole
+    label: Název firmy
+    comment: 'Lovata.OrdersShopaholic additional property kód pro Název firmy, které se propíše na faktury místo Jména a Příjmení'
+    span: left
 additional_properties_user_due_date_days:
     tab: Dodatečná pole
     label: Splatnost faktur
     comment: 'Lovata.Buddies additional property kód (code) pro Splatnost faktur'
+    span: right
 
 settings_redirect_to_list:
     tab: Nastavení
