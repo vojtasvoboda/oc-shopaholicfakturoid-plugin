@@ -27,4 +27,8 @@ settings_redirect_to_list:
     tab: Nastavení
     label: Přesměrovat na výpis objednávek
     comment: 'Po odeslání do Fakturoidu přesměrovat na výpis všech objednávek'
-    type: checkbox
+    type: switch
+settings_include_empty_delivery:
+    tab: Nastavení
+    label: Vložit na fakturu řádek dopravy i pokud je zdarma
+    type: switch

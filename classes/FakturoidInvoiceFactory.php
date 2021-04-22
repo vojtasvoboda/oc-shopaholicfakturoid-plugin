@@ -81,7 +81,51 @@ class FakturoidInvoiceFactory
             ];
         }
 
+        // add delivery as order line if not empty
+        $delivery = $this->getOrderShippingAsLine($order, $locale);
+        if (!empty($delivery)) {
+            $lines[] = $delivery;
+        }
+
         return $lines;
+    }
+
+    /**
+     * @param Order $order
+     * @param string $locale
+     * @return array
+     */
+    private function getOrderShippingAsLine(Order $order, $locale)
+    {
+        // shipping price
+        $price = (float) $order->shipping_price;
+
+        // skip if price is for free and we have disabled inserting empty shipping
+        if (empty($price)) {
+            $include_delivery_empty = (bool) Settings::get('settings_include_empty_delivery', false);
+            if ($include_delivery_empty === false) {
+                return [];
+            }
+        }
+
+        // shipping name
+        $name = $order->shipping_type->name;
+        if (PluginManager::instance()->exists('RainLab.Translate')) {
+            $name = $order->shipping_type->lang($locale)->name;
+        }
+
+        // price without vat
+        $price_without_vat = $price;
+        if (!empty($price) && $order->shipping_tax_percent > 0) {
+            $price_without_vat = ($price * 100) / (100 + $order->shipping_tax_percent);
+        }
+
+        return [
+            'name' => $name,
+            'quantity' => 1,
+            'unit_price' => $price_without_vat,
+            'vat_rate' => !empty($order->shipping_tax_percent) ? $order->shipping_tax_percent : 0,
+        ];
     }
 
     /**
