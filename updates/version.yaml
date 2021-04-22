@@ -4,3 +4,9 @@
     - add_user_fakturoid_id.php
 1.0.1: Add support for RainLab.Translation
 1.0.2: Fix handling exceptions without error messages
+1.0.3:
+    - Move config to the backend settings
+    - Could force redirect to order list after order sent to the Fakturoid
+    - Add user due date days config
+    - Add order company name config
+    - Could add shipping as order line
