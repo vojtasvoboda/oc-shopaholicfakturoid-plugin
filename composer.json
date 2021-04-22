@@ -1,5 +1,5 @@
 {
-    "name": "vojtasvoboda/oc-shopaholicfakturoid-plugin",
+    "name": "vojtasvoboda/shopaholicfakturoid-plugin",
     "description": "Shopaholic Fakturoid connector plugin for OctoberCMS",
     "type": "october-plugin",
     "keywords": ["shopaholic", "fakturoid"],
