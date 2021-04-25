@@ -13,6 +13,20 @@ Require VojtaSvoboda.Fakturoid plugin and Lovata.OrdersShopaholic plugins.
 After installing, you will see a new tab Fakturoid in Shopaholic order detail with a list of all attached Fakturoid
 invoices and button which allows you to send an order to the Fakturoid and create a new Fakturoid invoice.
 
+### Available payment methods
+
+When creating new Payment Methods, don't forget to select Fakturoid type from this list:
+
+- bank (bankovní převod)
+- cash (hotově)
+- cod (dobírka)
+- paypal (PayPal)
+- card (Karta)
+
+You can set it in new Fakturoid tab in Payment Method detail.
+
+See: https://fakturoid.docs.apiary.io/#reference/invoices
+
 ## Contributing
 
 Please send Pull Request to the master branch.

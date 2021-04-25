@@ -1,0 +1,11 @@
+fakturoid_type:
+    tab: Fakturoid
+    label: Typ platby ve Fakturoidu
+    type: dropdown
+    options:
+        null: --- vyberte typ platby ---
+        bank: Bankovní převod
+        cash: Hotově
+        cod: Dobírka
+        paypal: PayPal
+        card: Karta

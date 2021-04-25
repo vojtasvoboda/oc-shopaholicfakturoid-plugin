@@ -6,6 +6,7 @@ use Event;
 use File;
 use Lovata\OrdersShopaholic\Controllers\Orders;
 use Lovata\OrdersShopaholic\Models\Order;
+use Lovata\OrdersShopaholic\Models\PaymentMethod;
 use System\Classes\PluginBase;
 use VojtaSvoboda\Fakturoid\Models\Settings;
 use VojtaSvoboda\ShopaholicFakturoid\Models\Invoice;
@@ -54,6 +55,19 @@ class Plugin extends PluginBase
 
             // add new fields
             $configFile = __DIR__ . '/config/lovata_ordersshopaholic_order_fields.yaml';
+            $config = Yaml::parse(File::get($configFile));
+            $form->tabs['fields'] += $config;
+        });
+
+        // extend Lovata.OrdersShopaholic PaymentMethod form
+        Event::listen('backend.form.extendFieldsBefore', function (Form $form) {
+            // apply only to User model
+            if (!$form->model instanceof PaymentMethod) {
+                return;
+            }
+
+            // add new fields
+            $configFile = __DIR__ . '/config/lovata_ordersshopaholic_payment_method_fields.yaml';
             $config = Yaml::parse(File::get($configFile));
             $form->tabs['fields'] += $config;
         });

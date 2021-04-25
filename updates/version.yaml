@@ -10,3 +10,6 @@
     - Add user due date days config
     - Add order company name config
     - Could add shipping as order line
+1.0.4:
+    - Add payment method to the invoices
+    - add_payment_fakturoid_type.php

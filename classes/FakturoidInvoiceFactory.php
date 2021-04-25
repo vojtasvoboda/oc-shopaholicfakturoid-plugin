@@ -7,6 +7,8 @@ use VojtaSvoboda\Fakturoid\Models\Settings;
 
 class FakturoidInvoiceFactory
 {
+    const DEFAULT_PAYMENT_METHOD = 'bank';
+
     /**
      * @param Order $order
      * @param int $fakturoid_user_id
@@ -20,12 +22,18 @@ class FakturoidInvoiceFactory
         // order lines
         $lines = $this->getOrderLines($order, $locale);
 
+        // payment method
+        $payment = self::DEFAULT_PAYMENT_METHOD;
+        if (!empty($order->payment_method->fakturoid_type)) {
+            $payment = $order->payment_method->fakturoid_type;
+        }
+
         // prepare invoice data
         $invoice = [
             'custom_id' => $order->id,
             'subject_id' => $fakturoid_user_id,
             'currency' => !empty($order->currency) ? $order->currency->code : null,
-            'payment_method' => !empty($order->payment_method) ? $order->payment_method->code : null,
+            'payment_method' => $payment,
             'lines' => $lines,
         ];
 
