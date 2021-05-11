@@ -40,7 +40,7 @@ class OrderFakturoidSendable extends ExtensionBase
 
         // redirect to the orders list
         $toList = Settings::get('settings_redirect_to_list', false);
-        if (!empty($toList) && !empty($error)) {
+        if (!empty($toList) && empty($error)) {
             $redirect = Backend::url('lovata/ordersshopaholic/orders');
         }
 
