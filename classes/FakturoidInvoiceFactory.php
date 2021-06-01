@@ -106,7 +106,7 @@ class FakturoidInvoiceFactory
     private function getOrderShippingAsLine(Order $order, $locale)
     {
         // shipping price
-        $price = (float) $order->shipping_price;
+        $price = $order->shipping_price_value;
 
         // skip if price is for free and we have disabled inserting empty shipping
         if (empty($price)) {
