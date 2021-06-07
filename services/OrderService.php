@@ -89,6 +89,8 @@ class OrderService
         $order->fakturoid_invoices()->create([
             'fakturoid_id' => $fakturoid_invoice->id,
             'fakturoid_number' => $fakturoid_invoice->number,
+            'fakturoid_public_html_url' => $fakturoid_invoice->public_html_url,
+            'fakturoid_pdf_url' => $fakturoid_invoice->pdf_url,
         ]);
     }
 

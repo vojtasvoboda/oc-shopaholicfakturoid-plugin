@@ -19,7 +19,9 @@ class Invoice extends Model
     /**
      * @var array $fillable Fillable fields.
      */
-    protected $fillable = ['order_id', 'fakturoid_id', 'fakturoid_number', 'created_by'];
+    protected $fillable = [
+        'order_id', 'fakturoid_id', 'fakturoid_number', 'fakturoid_public_html_url', 'fakturoid_pdf_url', 'created_by',
+    ];
 
     /**
      * @var bool $timestamps Disable timestamps since we don't have updated_at.
