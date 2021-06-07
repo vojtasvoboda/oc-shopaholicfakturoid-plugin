@@ -13,6 +13,8 @@
 1.0.4:
     - Add payment method to the invoices
     - add_payment_fakturoid_type.php
-1.0.5:
+1.0.5: Fix redirect to the orders list
+1.0.6: Fix getting shipping price as float
+1.0.7:
     - Add invoices links
     - add_invoices_links.php
