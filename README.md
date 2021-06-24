@@ -27,6 +27,10 @@ You can set it in new Fakturoid tab in Payment Method detail.
 
 See: https://fakturoid.docs.apiary.io/#reference/invoices
 
+## Creating invoice
+
+![Creating Invoice](/assets/images/schema.jpg)
+
 ## Contributing
 
 Please send Pull Request to the master branch.
