@@ -1,5 +1,6 @@
-<?php if (!empty($value)) { ?>
-    <button class="btn btn-default btn-xs" onclick="window.open('<?= $value ?>', '_blank'); return false;" role="button">
+<?php if (!empty($record->fakturoid_id)) { ?>
+    <?php $link = Backend::url('vojtasvoboda/shopaholicfakturoid/invoices/pdf/' . $record->id); ?>
+    <button class="btn btn-default btn-xs" onclick="window.open('<?= $link ?>', '_blank'); return false;">
         PDF
     </button>
 <?php } ?>

@@ -18,3 +18,6 @@
 1.0.7:
     - Add invoices links
     - add_invoices_links.php
+1.0.8:
+    - Refactor downloading invoice PDF
+    - remove_invoices_pdf_link.php

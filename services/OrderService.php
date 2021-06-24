@@ -64,6 +64,18 @@ class OrderService
     }
 
     /**
+     * Get PDF content for created invoice.
+     *
+     * @param int $fakturoid_id
+     * @return string|null
+     * @throws Exception
+     */
+    public function getInvoicePdf($fakturoid_id)
+    {
+        return $this->invoices->getInvoicePdf($fakturoid_id);
+    }
+
+    /**
      * @param int $order_id
      * @param bool $forceReloadUserFromFakturoid
      * @throws ApplicationException|Exception
@@ -90,7 +102,6 @@ class OrderService
             'fakturoid_id' => $fakturoid_invoice->id,
             'fakturoid_number' => $fakturoid_invoice->number,
             'fakturoid_public_html_url' => $fakturoid_invoice->public_html_url,
-            'fakturoid_pdf_url' => $fakturoid_invoice->pdf_url,
         ]);
     }
 
