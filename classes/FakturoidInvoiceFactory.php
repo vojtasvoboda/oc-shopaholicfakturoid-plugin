@@ -34,6 +34,7 @@ class FakturoidInvoiceFactory
             'subject_id' => $fakturoid_user_id,
             'currency' => !empty($order->currency) ? $order->currency->code : null,
             'payment_method' => $payment,
+            'order_number' => $order->order_number,
             'lines' => $lines,
         ];
 
