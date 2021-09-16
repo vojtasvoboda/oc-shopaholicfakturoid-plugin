@@ -34,6 +34,7 @@ class FakturoidInvoiceFactory
             'subject_id' => $fakturoid_user_id,
             'currency' => !empty($order->currency) ? $order->currency->code : null,
             'payment_method' => $payment,
+            'footer_note' => $this->getCountryFooterNote($order),
             'lines' => $lines,
         ];
 
@@ -150,5 +151,21 @@ class FakturoidInvoiceFactory
         $countryLocales = Config::get('vojtasvoboda.shopaholicfakturoid::locales', []);
 
         return isset($countryLocales[$country]) ? $countryLocales[$country] : null;
+    }
+
+    /**
+     * @param Order $order
+     * @return string|null
+     */
+    private function getCountryFooterNote(Order $order)
+    {
+        if (empty($order->property['billing_country'])) {
+            return null;
+        }
+
+        $country = mb_strtolower($order->property['billing_country']);
+        $footerNotes = Config::get('vojtasvoboda.shopaholicfakturoid::country_footer_notes', []);
+
+        return isset($footerNotes[$country]) ? $footerNotes[$country] : null;
     }
 }
