@@ -32,10 +32,11 @@ class FakturoidInvoiceFactory
         $invoice = [
             'custom_id' => $order->id,
             'subject_id' => $fakturoid_user_id,
+            'order_number' => $order->order_number,
             'currency' => !empty($order->currency) ? $order->currency->code : null,
             'payment_method' => $payment,
-            'footer_note' => $this->getCountryFooterNote($order),
             'lines' => $lines,
+            'footer_note' => $this->getCountryFooterNote($order),
         ];
 
         // if order has user
