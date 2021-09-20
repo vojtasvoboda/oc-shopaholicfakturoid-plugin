@@ -42,14 +42,14 @@ return [
     |--------------------------------------------------------------------------
     |
     | Mapping footer notes on country.
-	| If the country code is not mapped, the default settings from the fakturoid administration are used.
+    | If the country code is not mapped, the default settings from the fakturoid administration are used.
     |
     | !!! Use lowercase countries names !!!
     |
     */
-	'country_footer_notes' => [
-		'česká republika' => 'Footer specifically for the Czech Republic.',
-		'slovensko' => 'Footer specially for Slovakia',
-		'francie' => 'Footer specially for France',
-	],
+    'country_footer_notes' => [
+        'česká republika' => 'Footer specifically for the Czech Republic.',
+        'slovensko' => 'Footer specially for Slovakia',
+        'francie' => 'Footer specially for France',
+    ],
 ];

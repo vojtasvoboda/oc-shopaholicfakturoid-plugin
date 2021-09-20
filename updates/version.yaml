@@ -21,3 +21,6 @@
 1.0.8:
     - Refactor downloading invoice PDF
     - remove_invoices_pdf_link.php
+1.0.9:
+    - Add invoice footer specific for the country
+    - Pass order number to the invoice
