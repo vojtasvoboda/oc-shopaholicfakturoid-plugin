@@ -3,7 +3,7 @@ fakturoid_type:
     label: Typ platby ve Fakturoidu
     type: dropdown
     options:
-        null: --- vyberte typ platby ---
+        '': --- vyberte typ platby ---
         bank: Bankovní převod
         cash: Hotově
         cod: Dobírka
