@@ -24,3 +24,4 @@
 1.0.9:
     - Add invoice footer specific for the country
     - Pass order number to the invoice
+1.1.10: Fix null issue in payment methods fields
