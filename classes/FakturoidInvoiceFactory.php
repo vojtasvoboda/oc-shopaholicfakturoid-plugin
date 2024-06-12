@@ -37,6 +37,7 @@ class FakturoidInvoiceFactory
             'payment_method' => $payment,
             'lines' => $lines,
             'footer_note' => $this->getCountryFooterNote($order),
+            'language' => $locale,
         ];
 
         // if order has user
@@ -52,6 +53,11 @@ class FakturoidInvoiceFactory
                 }
             }
         }
+
+        if($isPaid = $this->hasPaidStatus($order)){
+            $invoice['show_already_paid_note_in_pdf'] = $isPaid;
+        }
+
 
         return $invoice;
     }
@@ -142,7 +148,7 @@ class FakturoidInvoiceFactory
      * @param Order $order
      * @return string|null
      */
-    private function getTranslationLocale(Order $order)
+    private function getTranslationLocale(Order $order): ?string
     {
         if (empty($order->property['billing_country'])) {
             return null;
@@ -168,5 +174,21 @@ class FakturoidInvoiceFactory
         $footerNotes = Config::get('vojtasvoboda.shopaholicfakturoid::country_footer_notes', []);
 
         return isset($footerNotes[$country]) ? $footerNotes[$country] : null;
+    }
+
+    /**
+     * For ALREADY PAID displaying on invoice
+     * @param Order $order
+     * @return bool
+     */
+    private function hasPaidStatus(Order $order): bool
+    {
+        $paidStatuses = Config::get('vojtasvoboda.shopaholicfakturoid::is_paid_statuses', []);
+
+        if (in_array($order->status->code, $paidStatuses)) {
+            return true;
+        }
+
+        return false;
     }
 }

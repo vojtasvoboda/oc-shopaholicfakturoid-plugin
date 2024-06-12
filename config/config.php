@@ -169,4 +169,19 @@ return [
         'sk' => 'Footer specially for Slovakia',
         'de' => 'Footer specially for Germany',*/
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Paid Status
+    |--------------------------------------------------------------------------
+    |
+    | Mapping paid status from administration for: ALREADY PAID display in invoice
+    |
+    | !!! Use status code property from adminisitration !!!
+    |
+    */
+    'is_paid_statuses' => [
+        'paid',
+        'paid_with_card'
+    ],
 ];
